@@ -50,6 +50,7 @@ def get_top_5():
             if 20 <= age <= 65:
                 for citizen_code in kkdata.STATISTICS[year][area][age]:
                     citizenship_dist[citizen_code] = citizenship_dist.get(citizen_code, 0)+kkdata.STATISTICS[year][area][age][citizen_code]
+    citizenship_dist.pop(5100)
     so = sorted(citizenship_dist.items(), key=lambda x: x[1], reverse=True)
     so5 = so[:5]
     return {tup[0]:tup[1] for tup in so5}
